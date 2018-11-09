@@ -1,0 +1,1219 @@
+Microsoft Windows [版本 10.0.17134.345]
+(c) 2018 Microsoft Corporation。保留所有权利。
+
+C:\WINDOWS\system32>mysql -u root -p
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.12 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use sys;
+Database changed
+mysql> select * from jobs;
++------------+---------------------------------+------------+------------+
+| JOB_ID     | JOB_TITLE                       | MIN_SALARY | MAX_SALARY |
++------------+---------------------------------+------------+------------+
+| AD_PRES    | President                       | 20080      | 40000      |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |
+| SA_REP     | Sales Representative            | 6000       | 12008      |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |
+| IT_PROG    | Programmer                      | 4000       | 10000      |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |
++------------+---------------------------------+------------+------------+
+19 rows in set (0.00 sec)
+
+mysql> select distinct MIN_SALARY from jobs;
++------------+
+| MIN_SALARY |
++------------+
+| 20080      |
+| 15000      |
+| 3000       |
+| 8200       |
+| 4200       |
+| 10000      |
+| 6000       |
+| 8000       |
+| 2500       |
+| 5500       |
+| 2008       |
+| 4000       |
+| 9000       |
+| 4500       |
++------------+
+14 rows in set (0.00 sec)
+
+mysql> show tables;
++-----------------------------------------------+
+| Tables_in_sys                                 |
++-----------------------------------------------+
+| countries                                     |
+| departments                                   |
+| employees                                     |
+| host_summary                                  |
+| host_summary_by_file_io                       |
+| host_summary_by_file_io_type                  |
+| host_summary_by_stages                        |
+| host_summary_by_statement_latency             |
+| host_summary_by_statement_type                |
+| innodb_buffer_stats_by_schema                 |
+| innodb_buffer_stats_by_table                  |
+| innodb_lock_waits                             |
+| io_by_thread_by_latency                       |
+| io_global_by_file_by_bytes                    |
+| io_global_by_file_by_latency                  |
+| io_global_by_wait_by_bytes                    |
+| io_global_by_wait_by_latency                  |
+| job_history                                   |
+| jobs                                          |
+| latest_file_io                                |
+| locations                                     |
+| memory_by_host_by_current_bytes               |
+| memory_by_thread_by_current_bytes             |
+| memory_by_user_by_current_bytes               |
+| memory_global_by_current_bytes                |
+| memory_global_total                           |
+| metrics                                       |
+| processlist                                   |
+| ps_check_lost_instrumentation                 |
+| regions                                       |
+| schema_auto_increment_columns                 |
+| schema_index_statistics                       |
+| schema_object_overview                        |
+| schema_redundant_indexes                      |
+| schema_table_lock_waits                       |
+| schema_table_statistics                       |
+| schema_table_statistics_with_buffer           |
+| schema_tables_with_full_table_scans           |
+| schema_unused_indexes                         |
+| session                                       |
+| session_ssl_status                            |
+| statement_analysis                            |
+| statements_with_errors_or_warnings            |
+| statements_with_full_table_scans              |
+| statements_with_runtimes_in_95th_percentile   |
+| statements_with_sorting                       |
+| statements_with_temp_tables                   |
+| sys_config                                    |
+| user_summary                                  |
+| user_summary_by_file_io                       |
+| user_summary_by_file_io_type                  |
+| user_summary_by_stages                        |
+| user_summary_by_statement_latency             |
+| user_summary_by_statement_type                |
+| version                                       |
+| wait_classes_global_by_avg_latency            |
+| wait_classes_global_by_latency                |
+| waits_by_host_by_latency                      |
+| waits_by_user_by_latency                      |
+| waits_global_by_latency                       |
+| x$host_summary                                |
+| x$host_summary_by_file_io                     |
+| x$host_summary_by_file_io_type                |
+| x$host_summary_by_stages                      |
+| x$host_summary_by_statement_latency           |
+| x$host_summary_by_statement_type              |
+| x$innodb_buffer_stats_by_schema               |
+| x$innodb_buffer_stats_by_table                |
+| x$innodb_lock_waits                           |
+| x$io_by_thread_by_latency                     |
+| x$io_global_by_file_by_bytes                  |
+| x$io_global_by_file_by_latency                |
+| x$io_global_by_wait_by_bytes                  |
+| x$io_global_by_wait_by_latency                |
+| x$latest_file_io                              |
+| x$memory_by_host_by_current_bytes             |
+| x$memory_by_thread_by_current_bytes           |
+| x$memory_by_user_by_current_bytes             |
+| x$memory_global_by_current_bytes              |
+| x$memory_global_total                         |
+| x$processlist                                 |
+| x$ps_digest_95th_percentile_by_avg_us         |
+| x$ps_digest_avg_latency_distribution          |
+| x$ps_schema_table_statistics_io               |
+| x$schema_flattened_keys                       |
+| x$schema_index_statistics                     |
+| x$schema_table_lock_waits                     |
+| x$schema_table_statistics                     |
+| x$schema_table_statistics_with_buffer         |
+| x$schema_tables_with_full_table_scans         |
+| x$session                                     |
+| x$statement_analysis                          |
+| x$statements_with_errors_or_warnings          |
+| x$statements_with_full_table_scans            |
+| x$statements_with_runtimes_in_95th_percentile |
+| x$statements_with_sorting                     |
+| x$statements_with_temp_tables                 |
+| x$user_summary                                |
+| x$user_summary_by_file_io                     |
+| x$user_summary_by_file_io_type                |
+| x$user_summary_by_stages                      |
+| x$user_summary_by_statement_latency           |
+| x$user_summary_by_statement_type              |
+| x$wait_classes_global_by_avg_latency          |
+| x$wait_classes_global_by_latency              |
+| x$waits_by_host_by_latency                    |
+| x$waits_by_user_by_latency                    |
+| x$waits_global_by_latency                     |
++-----------------------------------------------+
+108 rows in set (0.02 sec)
+
+mysql> select * from jobs;
++------------+---------------------------------+------------+------------+
+| JOB_ID     | JOB_TITLE                       | MIN_SALARY | MAX_SALARY |
++------------+---------------------------------+------------+------------+
+| AD_PRES    | President                       | 20080      | 40000      |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |
+| SA_REP     | Sales Representative            | 6000       | 12008      |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |
+| IT_PROG    | Programmer                      | 4000       | 10000      |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |
++------------+---------------------------------+------------+------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from jobs where JOB_TITLE='Sales Manager';
++--------+---------------+------------+------------+
+| JOB_ID | JOB_TITLE     | MIN_SALARY | MAX_SALARY |
++--------+---------------+------------+------------+
+| SA_MAN | Sales Manager | 10000      | 20080      |
++--------+---------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from jobs where MIN_SALARY>5500;
++---------+-------------------------------+------------+------------+
+| JOB_ID  | JOB_TITLE                     | MIN_SALARY | MAX_SALARY |
++---------+-------------------------------+------------+------------+
+| AD_PRES | President                     | 20080      | 40000      |
+| AD_VP   | Administration Vice President | 15000      | 30000      |
+| FI_MGR  | Finance Manager               | 8200       | 16000      |
+| AC_MGR  | Accounting Manager            | 8200       | 16000      |
+| SA_MAN  | Sales Manager                 | 10000      | 20080      |
+| SA_REP  | Sales Representative          | 6000       | 12008      |
+| PU_MAN  | Purchasing Manager            | 8000       | 15000      |
+| MK_MAN  | Marketing Manager             | 9000       | 15000      |
++---------+-------------------------------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from jobs order by MIN_SALARY;
++------------+---------------------------------+------------+------------+
+| JOB_ID     | JOB_TITLE                       | MIN_SALARY | MAX_SALARY |
++------------+---------------------------------+------------+------------+
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |
+| AD_PRES    | President                       | 20080      | 40000      |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |
+| IT_PROG    | Programmer                      | 4000       | 10000      |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |
+| SA_REP     | Sales Representative            | 6000       | 12008      |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |
++------------+---------------------------------+------------+------------+
+19 rows in set (0.00 sec)
+mysql> select * from jobs where MIN_SALARY order by MIN_SALARY;
++------------+---------------------------------+------------+------------+
+| JOB_ID     | JOB_TITLE                       | MIN_SALARY | MAX_SALARY |
++------------+---------------------------------+------------+------------+
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |
+| AD_PRES    | President                       | 20080      | 40000      |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |
+| IT_PROG    | Programmer                      | 4000       | 10000      |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |
+| SA_REP     | Sales Representative            | 6000       | 12008      |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |
++------------+---------------------------------+------------+------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from jobs where MIN_SALARY>5500 order by MIN_SALARY;
++---------+-------------------------------+------------+------------+
+| JOB_ID  | JOB_TITLE                     | MIN_SALARY | MAX_SALARY |
++---------+-------------------------------+------------+------------+
+| SA_MAN  | Sales Manager                 | 10000      | 20080      |
+| AD_VP   | Administration Vice President | 15000      | 30000      |
+| AD_PRES | President                     | 20080      | 40000      |
+| SA_REP  | Sales Representative          | 6000       | 12008      |
+| PU_MAN  | Purchasing Manager            | 8000       | 15000      |
+| FI_MGR  | Finance Manager               | 8200       | 16000      |
+| AC_MGR  | Accounting Manager            | 8200       | 16000      |
+| MK_MAN  | Marketing Manager             | 9000       | 15000      |
++---------+-------------------------------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs where MIN_SALARY>5500 order by MIN_SALARY;
++------------+
+| MIN_SALARY |
++------------+
+| 10000      |
+| 15000      |
+| 20080      |
+| 6000       |
+| 8000       |
+| 8200       |
+| 8200       |
+| 9000       |
++------------+
+8 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs where MIN_SALARY>5500 order by MIN_SALARY desc;
++------------+
+| MIN_SALARY |
++------------+
+| 9000       |
+| 8200       |
+| 8200       |
+| 8000       |
+| 6000       |
+| 20080      |
+| 15000      |
+| 10000      |
++------------+
+8 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs where MIN_SALARY>5500 order by MIN_SALARY desc limit 4;
++------------+
+| MIN_SALARY |
++------------+
+| 9000       |
+| 8200       |
+| 8200       |
+| 8000       |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs where MIN_SALARY>5500 order by MIN_SALARY desc limit 4,2;
++------------+
+| MIN_SALARY |
++------------+
+| 6000       |
+| 20080      |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs where MIN_SALARY>5500 order by MIN_SALARY desc limit 2,2;
++------------+
+| MIN_SALARY |
++------------+
+| 8200       |
+| 8000       |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY from jobs;
++------------+
+| MIN_SALARY |
++------------+
+| 20080      |
+| 15000      |
+| 3000       |
+| 8200       |
+| 4200       |
+| 8200       |
+| 4200       |
+| 10000      |
+| 6000       |
+| 8000       |
+| 2500       |
+| 5500       |
+| 2008       |
+| 2500       |
+| 4000       |
+| 9000       |
+| 4000       |
+| 4000       |
+| 4500       |
++------------+
+19 rows in set (0.00 sec)
+
+mysql> select sum(MIN_SALARY) from jobs;
++-----------------+
+| sum(MIN_SALARY) |
++-----------------+
+|          124888 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(MAX_SALARY) from jobs;
++-----------------+
+| sum(MAX_SALARY) |
++-----------------+
+|          251088 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select max(MAX_SALARY) from jobs;
++-----------------+
+| max(MAX_SALARY) |
++-----------------+
+| 9000            |
++-----------------+
+1 row in set (0.00 sec)
+mysql> select max(MAX_SALARY) from jobs where MAX_SALARY>5500;
++-----------------+
+| max(MAX_SALARY) |
++-----------------+
+| 9000            |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select MAX_SALARY,max(MAX_SALARY) from jobs group by MAX_SALARY;
++------------+-----------------+
+| MAX_SALARY | max(MAX_SALARY) |
++------------+-----------------+
+| 40000      | 40000           |
+| 30000      | 30000           |
+| 6000       | 6000            |
+| 16000      | 16000           |
+| 9000       | 9000            |
+| 20080      | 20080           |
+| 12008      | 12008           |
+| 15000      | 15000           |
+| 5500       | 5500            |
+| 8500       | 8500            |
+| 5000       | 5000            |
+| 10000      | 10000           |
+| 10500      | 10500           |
++------------+-----------------+
+13 rows in set (0.00 sec)
+mysql> select sum(MAX_SALARY),sum(MIN_SALARY) from jobs;
++-----------------+-----------------+
+| sum(MAX_SALARY) | sum(MIN_SALARY) |
++-----------------+-----------------+
+|          251088 |          124888 |
++-----------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select MAX_SALARY,MIN_SALARY, sum(MAX_SALARY),sum(MIN_SALARY) from jobs group by MIN_SALARY,MAX_SALARY;
++------------+------------+-----------------+-----------------+
+| MAX_SALARY | MIN_SALARY | sum(MAX_SALARY) | sum(MIN_SALARY) |
++------------+------------+-----------------+-----------------+
+| 40000      | 20080      |           40000 |           20080 |
+| 30000      | 15000      |           30000 |           15000 |
+| 6000       | 3000       |            6000 |            3000 |
+| 16000      | 8200       |           32000 |           16400 |
+| 9000       | 4200       |           18000 |            8400 |
+| 20080      | 10000      |           20080 |           10000 |
+| 12008      | 6000       |           12008 |            6000 |
+| 15000      | 8000       |           15000 |            8000 |
+| 5500       | 2500       |           11000 |            5000 |
+| 8500       | 5500       |            8500 |            5500 |
+| 5000       | 2008       |            5000 |            2008 |
+| 10000      | 4000       |           10000 |            4000 |
+| 15000      | 9000       |           15000 |            9000 |
+| 9000       | 4000       |           18000 |            8000 |
+| 10500      | 4500       |           10500 |            4500 |
++------------+------------+-----------------+-----------------+
+15 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY,count(MIN_SALARY) from jobs group by MIN_SALARY;
++------------+-------------------+
+| MIN_SALARY | count(MIN_SALARY) |
++------------+-------------------+
+| 20080      |                 1 |
+| 15000      |                 1 |
+| 3000       |                 1 |
+| 8200       |                 2 |
+| 4200       |                 2 |
+| 10000      |                 1 |
+| 6000       |                 1 |
+| 8000       |                 1 |
+| 2500       |                 2 |
+| 5500       |                 1 |
+| 2008       |                 1 |
+| 4000       |                 3 |
+| 9000       |                 1 |
+| 4500       |                 1 |
++------------+-------------------+
+14 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY,count(MIN_SALARY) from jobs where MIN_SALARY>5500 group by MIN_SALARY;
++------------+-------------------+
+| MIN_SALARY | count(MIN_SALARY) |
++------------+-------------------+
+| 20080      |                 1 |
+| 15000      |                 1 |
+| 8200       |                 2 |
+| 10000      |                 1 |
+| 6000       |                 1 |
+| 8000       |                 1 |
+| 9000       |                 1 |
++------------+-------------------+
+7 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY,count(MIN_SALARY),MAX_SALARY,count(MAX_SALARY) from jobs group by MIN_SALARY,MAX_SALARY;
++------------+-------------------+------------+-------------------+
+| MIN_SALARY | count(MIN_SALARY) | MAX_SALARY | count(MAX_SALARY) |
++------------+-------------------+------------+-------------------+
+| 20080      |                 1 | 40000      |                 1 |
+| 15000      |                 1 | 30000      |                 1 |
+| 3000       |                 1 | 6000       |                 1 |
+| 8200       |                 2 | 16000      |                 2 |
+| 4200       |                 2 | 9000       |                 2 |
+| 10000      |                 1 | 20080      |                 1 |
+| 6000       |                 1 | 12008      |                 1 |
+| 8000       |                 1 | 15000      |                 1 |
+| 2500       |                 2 | 5500       |                 2 |
+| 5500       |                 1 | 8500       |                 1 |
+| 2008       |                 1 | 5000       |                 1 |
+| 4000       |                 1 | 10000      |                 1 |
+| 9000       |                 1 | 15000      |                 1 |
+| 4000       |                 2 | 9000       |                 2 |
+| 4500       |                 1 | 10500      |                 1 |
++------------+-------------------+------------+-------------------+
+15 rows in set (0.00 sec)
+
+mysql> select MIN_SALARY,count(MIN_SALARY),MAX_SALARY,count(MAX_SALARY) from jobs group by MIN_SALARY,MAX_SALARY with rollup;
++------------+-------------------+------------+-------------------+
+| MIN_SALARY | count(MIN_SALARY) | MAX_SALARY | count(MAX_SALARY) |
++------------+-------------------+------------+-------------------+
+| 10000      |                 1 | 20080      |                 1 |
+| 10000      |                 1 | NULL       |                 1 |
+| 15000      |                 1 | 30000      |                 1 |
+| 15000      |                 1 | NULL       |                 1 |
+| 2008       |                 1 | 5000       |                 1 |
+| 2008       |                 1 | NULL       |                 1 |
+| 20080      |                 1 | 40000      |                 1 |
+| 20080      |                 1 | NULL       |                 1 |
+| 2500       |                 2 | 5500       |                 2 |
+| 2500       |                 2 | NULL       |                 2 |
+| 3000       |                 1 | 6000       |                 1 |
+| 3000       |                 1 | NULL       |                 1 |
+| 4000       |                 1 | 10000      |                 1 |
+| 4000       |                 2 | 9000       |                 2 |
+| 4000       |                 3 | NULL       |                 3 |
+| 4200       |                 2 | 9000       |                 2 |
+| 4200       |                 2 | NULL       |                 2 |
+| 4500       |                 1 | 10500      |                 1 |
+| 4500       |                 1 | NULL       |                 1 |
+| 5500       |                 1 | 8500       |                 1 |
+| 5500       |                 1 | NULL       |                 1 |
+| 6000       |                 1 | 12008      |                 1 |
+| 6000       |                 1 | NULL       |                 1 |
+| 8000       |                 1 | 15000      |                 1 |
+| 8000       |                 1 | NULL       |                 1 |
+| 8200       |                 2 | 16000      |                 2 |
+| 8200       |                 2 | NULL       |                 2 |
+| 9000       |                 1 | 15000      |                 1 |
+| 9000       |                 1 | NULL       |                 1 |
+| NULL       |                19 | NULL       |                19 |
++------------+-------------------+------------+-------------------+
+30 rows in set (0.00 sec)
+mysql> select * from departments;
++---------------+----------------------+------------+-------------+
+| DEPARTMENT_ID | DEPARTMENT_NAME      | MANAGER_ID | LOCATION_ID |
++---------------+----------------------+------------+-------------+
+|            10 | Administration       | 200        | 1700        |
+|            20 | Marketing            | 201        | 1800        |
+|            30 | Purchasing           | 114        | 1700        |
+|            40 | Human Resources      | 203        | 2400        |
+|            50 | Shipping             | 121        | 1500        |
+|            60 | IT                   | 103        | 1400        |
+|            70 | Public Relations     | 204        | 2700        |
+|            80 | Sales                | 145        | 2500        |
+|            90 | Executive            | 100        | 1700        |
+|           100 | Finance              | 108        | 1700        |
+|           110 | Accounting           | 205        | 1700        |
+|           120 | Treasury             |            | 1700        |
+|           130 | Corporate Tax        |            | 1700        |
+|           140 | Control And Credit   |            | 1700        |
+|           150 | Shareholder Services |            | 1700        |
+|           160 | Benefits             |            | 1700        |
+|           170 | Manufacturing        |            | 1700        |
+|           180 | Construction         |            | 1700        |
+|           190 | Contracting          |            | 1700        |
+|           200 | Operations           |            | 1700        |
+|           210 | IT Support           |            | 1700        |
+|           220 | NOC                  |            | 1700        |
+|           230 | IT Helpdesk          |            | 1700        |
+|           240 | Government Sales     |            | 1700        |
+|           250 | Retail Sales         |            | 1700        |
+|           260 | Recruiting           |            | 1700        |
+|           270 | Payroll              |            | 1700        |
++---------------+----------------------+------------+-------------+
+27 rows in set (0.00 sec)
+
+mysql> alter table departments add isok int(1) default 0;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from departments;
++---------------+----------------------+------------+-------------+------+
+| DEPARTMENT_ID | DEPARTMENT_NAME      | MANAGER_ID | LOCATION_ID | isok |
++---------------+----------------------+------------+-------------+------+
+|            10 | Administration       | 200        | 1700        |    0 |
+|            20 | Marketing            | 201        | 1800        |    0 |
+|            30 | Purchasing           | 114        | 1700        |    0 |
+|            40 | Human Resources      | 203        | 2400        |    0 |
+|            50 | Shipping             | 121        | 1500        |    0 |
+|            60 | IT                   | 103        | 1400        |    0 |
+|            70 | Public Relations     | 204        | 2700        |    0 |
+|            80 | Sales                | 145        | 2500        |    0 |
+|            90 | Executive            | 100        | 1700        |    0 |
+|           100 | Finance              | 108        | 1700        |    0 |
+|           110 | Accounting           | 205        | 1700        |    0 |
+|           120 | Treasury             |            | 1700        |    0 |
+|           130 | Corporate Tax        |            | 1700        |    0 |
+|           140 | Control And Credit   |            | 1700        |    0 |
+|           150 | Shareholder Services |            | 1700        |    0 |
+|           160 | Benefits             |            | 1700        |    0 |
+|           170 | Manufacturing        |            | 1700        |    0 |
+|           180 | Construction         |            | 1700        |    0 |
+|           190 | Contracting          |            | 1700        |    0 |
+|           200 | Operations           |            | 1700        |    0 |
+|           210 | IT Support           |            | 1700        |    0 |
+|           220 | NOC                  |            | 1700        |    0 |
+|           230 | IT Helpdesk          |            | 1700        |    0 |
+|           240 | Government Sales     |            | 1700        |    0 |
+|           250 | Retail Sales         |            | 1700        |    0 |
+|           260 | Recruiting           |            | 1700        |    0 |
+|           270 | Payroll              |            | 1700        |    0 |
++---------------+----------------------+------------+-------------+------+
+27 rows in set (0.00 sec)
+
+mysql> select * from jobs,departments where jobs.isok=departments.isok;
++------------+---------------------------------+------------+------------+-------+------+---------------+----------------------+------------+-------------+------+
+| JOB_ID     | JOB_TITLE                       | MIN_SALARY | MAX_SALARY | yeren | isok | DEPARTMENT_ID | DEPARTMENT_NAME      | MANAGER_ID | LOCATION_ID | isok |
++------------+---------------------------------+------------+------------+-------+------+---------------+----------------------+------------+-------------+------+
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            10 | Administration       | 200        | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            20 | Marketing            | 201        | 1800        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            30 | Purchasing           | 114        | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            40 | Human Resources      | 203        | 2400        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            50 | Shipping             | 121        | 1500        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            60 | IT                   | 103        | 1400        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            70 | Public Relations     | 204        | 2700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            80 | Sales                | 145        | 2500        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |            90 | Executive            | 100        | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           100 | Finance              | 108        | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           110 | Accounting           | 205        | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           120 | Treasury             |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           130 | Corporate Tax        |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           140 | Control And Credit   |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           150 | Shareholder Services |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           160 | Benefits             |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           170 | Manufacturing        |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           180 | Construction         |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           190 | Contracting          |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           200 | Operations           |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           210 | IT Support           |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           220 | NOC                  |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           230 | IT Helpdesk          |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           240 | Government Sales     |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           250 | Retail Sales         |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           260 | Recruiting           |            | 1700        |    0 |
+| AD_PRES    | President                       | 20080      | 40000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| AD_VP      | Administration Vice President   | 15000      | 30000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| AD_ASST    | Administration Assistant        | 3000       | 6000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| FI_MGR     | Finance Manager                 | 8200       | 16000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| FI_ACCOUNT | Accountant                      | 4200       | 9000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| AC_MGR     | Accounting Manager              | 8200       | 16000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| AC_ACCOUNT | Public Accountant               | 4200       | 9000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| SA_MAN     | Sales Manager                   | 10000      | 20080      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| SA_REP     | Sales Representative            | 6000       | 12008      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| PU_MAN     | Purchasing Manager              | 8000       | 15000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| PU_CLERK   | Purchasing Clerk                | 2500       | 5500       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| ST_MAN     | Stock Manager                   | 5500       | 8500       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| ST_CLERK   | Stock Clerk                     | 2008       | 5000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| SH_CLERK   | Shipping Clerk                  | 2500       | 5500       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| IT_PROG    | Programmer                      | 4000       | 10000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| MK_MAN     | Marketing Manager               | 9000       | 15000      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| MK_REP     | Marketing Representative        | 4000       | 9000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| HR_REP     | Human Resources Representative  | 4000       | 9000       |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
+| PR_REP     | Public Relations Representative | 4500       | 10500      |     0 |    0 |           270 | Payroll              |            | 1700        |    0 |
++------------+---------------------------------+------------+------------+-------+------+---------------+----------------------+------------+-------------+------+
+513 rows in set (0.00 sec)
+mysql> create table shopping2(id int(11) primary key not null auto_increment,qianxi varchar(20) not null,chouying varchar(20) default 1);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc shopping2;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| qianxi   | varchar(20) | NO   |     | NULL    |                |
+| chouying | varchar(20) | YES  |     | 1       |                |
++----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> create table shopping3(id int(11) primary key not null auto_increment,xiaomei varchar(20) not null,wangli varchar(20) default 1);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc shopping3;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| xiaomei | varchar(20) | NO   |     | NULL    |                |
+| wangli  | varchar(20) | YES  |     | 1       |                |
++---------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+mysql> insert into shopping2(id,qianxi,chouying)values(1,'marin','10');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into shopping3(id,xiaomei,wangli)values(1,'jake','10');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from shopping2;
++----+--------+----------+
+| id | qianxi | chouying |
++----+--------+----------+
+|  1 | marin  | 10       |
++----+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from shopping3;
++----+---------+--------+
+| id | xiaomei | wangli |
++----+---------+--------+
+|  1 | jake    | 10     |
++----+---------+--------+
+1 row in set (0.00 sec)
+mysql> select * from shopping2 left join shopping3 on shopping2.id=shopping3.id;
++----+--------+----------+------+---------+--------+
+| id | qianxi | chouying | id   | xiaomei | wangli |
++----+--------+----------+------+---------+--------+
+|  1 | marin  | 10       |    1 | jake    | 10     |
++----+--------+----------+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from shopping2 where shopping2.id in (select id from shopping3);
++----+--------+----------+
+| id | qianxi | chouying |
++----+--------+----------+
+|  1 | marin  | 10       |
++----+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from shopping2 where exists (select id from shopping3 where id=2);
+Empty set (0.00 sec)
+
+mysql> select id from shopping2 union all select id from shopping3;
++----+
+| id |
++----+
+|  1 |
+|  1 |
++----+
+2 rows in set (0.00 sec)
+
