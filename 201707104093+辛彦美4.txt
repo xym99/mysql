@@ -1,0 +1,114 @@
+Microsoft Windows [版本 10.0.17134.345]
+(c) 2018 Microsoft Corporation。保留所有权利。
+
+C:\Users\xym>mysql -u root -p
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.12 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use sys;
+Database changed
+mysql> create table ok(id int primary key auto_increment,name varchar(20) not null,num varchar(10),things varchar(10),tt int(6));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc ok;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | NO   |     | NULL    |                |
+| num    | varchar(10) | YES  |     | NULL    |                |
+| things | varchar(10) | YES  |     | NULL    |                |
+| tt     | int(6)      | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into ok(id,name,num,things,tt)values(1,'yeren','1999','bb',7.4),(2,'xswl','2002','yanqing',5.4),(3,'mm','1995','yanlin',8.8),(4,'ss','2011','wangli',5.6),(5,'re','2022','lixia',9.1);
+Query OK, 5 rows affected (0.09 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from ok;
++----+-------+------+---------+------+
+| id | name  | num  | things  | tt   |
++----+-------+------+---------+------+
+|  1 | yeren | 1999 | bb      |    7 |
+|  2 | xswl  | 2002 | yanqing |    5 |
+|  3 | mm    | 1995 | yanlin  |    9 |
+|  4 | ss    | 2011 | wangli  |    6 |
+|  5 | re    | 2022 | lixia   |    9 |
++----+-------+------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select name from ok where name like '%mm';
++------+
+| name |
++------+
+| mm   |
++------+
+1 row in set (0.00 sec)
+
+mysql> select things from ok where things like '%wangli';
++--------+
+| things |
++--------+
+| wangli |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select * from ok where num like '2002%';
++----+------+------+---------+------+
+| id | name | num  | things  | tt   |
++----+------+------+---------+------+
+|  2 | xswl | 2002 | yanqing |    5 |
++----+------+------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select max(tt) from ok;
++---------+
+| max(tt) |
++---------+
+|       9 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select * from ok where name like '%R%';
++----+-------+------+--------+------+
+| id | name  | num  | things | tt   |
++----+-------+------+--------+------+
+|  1 | yeren | 1999 | bb     |    7 |
+|  5 | re    | 2022 | lixia  |    9 |
++----+-------+------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from ok where num like '%2%';
++----+------+------+---------+------+
+| id | name | num  | things  | tt   |
++----+------+------+---------+------+
+|  2 | xswl | 2002 | yanqing |    5 |
+|  4 | ss   | 2011 | wangli  |    6 |
+|  5 | re   | 2022 | lixia   |    9 |
++----+------+------+---------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from ok where tt>=6;
++----+-------+------+--------+------+
+| id | name  | num  | things | tt   |
++----+-------+------+--------+------+
+|  1 | yeren | 1999 | bb     |    7 |
+|  3 | mm    | 1995 | yanlin |    9 |
+|  4 | ss    | 2011 | wangli |    6 |
+|  5 | re    | 2022 | lixia  |    9 |
++----+-------+------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql>
+

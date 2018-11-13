@@ -1,0 +1,150 @@
+Microsoft Windows [版本 10.0.17134.345]
+(c) 2018 Microsoft Corporation。保留所有权利。
+
+C:\WINDOWS\system32>net start mysql80
+MySQL80 服务正在启动 ..
+MySQL80 服务已经启动成功。
+
+
+C:\WINDOWS\system32>mysql -u root -p
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.12 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use tongji2;
+Database changed
+mysql> create table sc(id int primary key not null unique auto_increment,name varchar(15) not null unique,num int(10));
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> desc sc;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(15) | NO   | UNI | NULL    |                |
+| num   | int(10)     | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> alter table sc modify num int zerofill;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc sc;
++-------+---------------------------+------+-----+---------+----------------+
+| Field | Type                      | Null | Key | Default | Extra          |
++-------+---------------------------+------+-----+---------+----------------+
+| id    | int(11)                   | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(15)               | NO   | UNI | NULL    |                |
+| num   | int(10) unsigned zerofill | YES  |     | NULL    |                |
++-------+---------------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table sc add money int(15);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table sc add product varchar(20);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc sc;
++---------+---------------------------+------+-----+---------+----------------+
+| Field   | Type                      | Null | Key | Default | Extra          |
++---------+---------------------------+------+-----+---------+----------------+
+| id      | int(11)                   | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(15)               | NO   | UNI | NULL    |                |
+| num     | int(10) unsigned zerofill | YES  |     | NULL    |                |
+| money   | int(15)                   | YES  |     | NULL    |                |
+| product | varchar(20)               | YES  |     | NULL    |                |
++---------+---------------------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into sc(id,name,num,money,product)values(1,'yeren',80,5,'book');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into sc(name,num,money,product)values('gujia',100,2,'shoes');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into sc(name,num,money,product)values('beiai',70,3,'things');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from sc;
++----+-------+------------+-------+---------+
+| id | name  | num        | money | product |
++----+-------+------------+-------+---------+
+|  1 | yeren | 0000000080 |     5 | book    |
+|  2 | gujia | 0000000100 |     2 | shoes   |
+|  3 | beiai | 0000000070 |     3 | things  |
++----+-------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> insert into sc(name,num,money,product)values('coco',50,6,'pants');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from sc;
++----+-------+------------+-------+---------+
+| id | name  | num        | money | product |
++----+-------+------------+-------+---------+
+|  1 | yeren | 0000000080 |     5 | book    |
+|  2 | gujia | 0000000100 |     2 | shoes   |
+|  3 | beiai | 0000000070 |     3 | things  |
+|  4 | coco  | 0000000050 |     6 | pants   |
++----+-------+------------+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update sc set product="book" where id=1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from sc;
++----+-------+------------+-------+---------+
+| id | name  | num        | money | product |
++----+-------+------------+-------+---------+
+|  1 | yeren | 0000000080 |     5 | book    |
+|  2 | gujia | 0000000100 |     2 | shoes   |
+|  3 | beiai | 0000000070 |     3 | things  |
+|  4 | coco  | 0000000050 |     6 | pants   |
++----+-------+------------+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> alter table sc add isDelete int(1) default 0;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from sc;
++----+-------+------------+-------+---------+----------+
+| id | name  | num        | money | product | isDelete |
++----+-------+------------+-------+---------+----------+
+|  1 | yeren | 0000000080 |     5 | book    |        0 |
+|  2 | gujia | 0000000100 |     2 | shoes   |        0 |
+|  3 | beiai | 0000000070 |     3 | things  |        0 |
+|  4 | coco  | 0000000050 |     6 | pants   |        0 |
++----+-------+------------+-------+---------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update sc set isDelete=1 where id=1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from sc;
++----+-------+------------+-------+---------+----------+
+| id | name  | num        | money | product | isDelete |
++----+-------+------------+-------+---------+----------+
+|  1 | yeren | 0000000080 |     5 | book    |        1 |
+|  2 | gujia | 0000000100 |     2 | shoes   |        0 |
+|  3 | beiai | 0000000070 |     3 | things  |        0 |
+|  4 | coco  | 0000000050 |     6 | pants   |        0 |
++----+-------+------------+-------+---------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
